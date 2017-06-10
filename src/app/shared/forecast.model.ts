@@ -44,5 +44,4 @@ export interface IFlagsObject{
   "isd-stations": string[];
   "madis-stations": string[];
   units: string;
-
 }

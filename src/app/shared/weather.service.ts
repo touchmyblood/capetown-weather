@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IForecast } from './weather.model';
+import { IForecast } from './forecast.model';
 
 @Injectable()
 export class WeatherService {
