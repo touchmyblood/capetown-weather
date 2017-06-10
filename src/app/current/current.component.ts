@@ -15,10 +15,10 @@ export class CurrentComponent implements OnInit {
 
   convertedDate: Date;
 
-  celsiusTemperature: Number;
-  fahrenheitTemperature: Number;
-  celsiusFeelsLikeTemperature: Number;
-  fahrenheitFeelsLikeTemperature: Number;
+  // celsiusTemperature: Number;
+  // fahrenheitTemperature: Number;
+  // celsiusFeelsLikeTemperature: Number;
+  // fahrenheitFeelsLikeTemperature: Number;
 
   constructor() { }
 
@@ -27,11 +27,11 @@ export class CurrentComponent implements OnInit {
 
     this.convertedDate = new Date(this.current.currently.time * 1000);
 
-    this.fahrenheitTemperature = Math.round(this.current.currently.temperature);
-    this.celsiusTemperature = Math.round(((this.current.currently.temperature -32) *5/9) );
+    // this.fahrenheitTemperature = Math.round(this.current.currently.temperature);
+    // this.celsiusTemperature = Math.round(((this.current.currently.temperature -32) *5/9) );
 
-    this.fahrenheitFeelsLikeTemperature = Math.round(this.current.currently.temperature);
-    this.celsiusFeelsLikeTemperature = Math.round(((this.current.currently.temperature -32) *5/9) );
+    // this.fahrenheitFeelsLikeTemperature = Math.round(this.current.currently.temperature);
+    // this.celsiusFeelsLikeTemperature = Math.round(((this.current.currently.temperature -32) *5/9) );
 
     // Display & animate the skycon icons
     var skycons = new Skycons({"color": "white"});

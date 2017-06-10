@@ -1,10 +1,13 @@
 <app-nav [scale]="scale" (scaleChanged)="handleScaleChanged($event)"></app-nav>
 
 <div class="row">
-  <app-current [current]="current" class="col-xs-6"></app-current>
-  <app-hourly class="col-xs-6"></app-hourly>
+
 </div>
 
 <div class="row">
-  <app-weekly></app-weekly>
+
 </div>
+
+<app-current [current]="current" class="col-xs-12"></app-current>
+<app-hourly class="col-xs-12"></app-hourly>
+<app-weekly></app-weekly>

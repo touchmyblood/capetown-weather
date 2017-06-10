@@ -11,6 +11,8 @@ import { FormsModule }   from '@angular/forms';
 import { HourlyComponent } from './hourly/hourly.component';
 import { WeeklyComponent } from './weekly/weekly.component';
 
+import {TemperatureConverterPipe} from './shared/temperature.converter.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,6 +20,7 @@ import { WeeklyComponent } from './weekly/weekly.component';
     CurrentComponent,
     HourlyComponent,
     WeeklyComponent,
+    TemperatureConverterPipe
   ],
   imports: [
     BrowserModule, FormsModule, ReactiveFormsModule

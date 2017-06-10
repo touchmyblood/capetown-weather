@@ -1,50 +1,45 @@
-<div class="row">
+<!--<div class="row">
   <div class="col-xs-8 text-left">
-    <h4>{{convertedDate  | date:'EEEE, dd MMMM yyyy'}}</h4>
+    <h4>{{convertedDate | date:'EEEE, dd MMMM yyyy'}}</h4>
   </div>
   <div class="col-xs-4 text-right">
     <h4> {{convertedDate | date:'HH:mm'}}</h4>
   </div>
 </div>
-<br>
+<br>-->
 <div class="row">
-  <h1>
-    <canvas id="icon1" width="128" height="128"></canvas>
-    <span [ngClass]="{hidden: current.scale === 'C'}">{{fahrenheitTemperature}}&#176;F </span>
-    <span [ngClass]="{hidden: current.scale === 'F'}">{{celsiusTemperature}}&#176;C </span>
-    <span>{{current.currently.summary}}</span>
-  </h1>
-  <h3>{{current.hourlySummary}}</h3>
-</div>
-<br>
-
-<div class="row">
-</div>
-
-<div class="row">
-  <div class="col-xs-12">
-    <div class="text-left">
-      <p [ngClass]="{hidden: current.scale === 'C'}">Feels like: {{fahrenheitFeelsLikeTemperature}}&#176;F</p>
-      <p [ngClass]="{hidden: current.scale === 'F'}">Feels like: {{celsiusFeelsLikeTemperature}}&#176;C</p>
-
-      <p>Wind: {{current.currently.windSpeed}} mph &nbsp;<span id="direction" style="display: inline-block;">↑</span></p>
-
-
-
-      <!--<label class="fahrenheit">Temperature {{current.temperature}}&#176;F</label>
-      <p class="celsius">Temperature {{current.temperature}}&#176;C</p>-->
-      <!--<p [ngClass]="{hidden: scale === 'C'}">Temperature {{current.temperature}} &#176;F</p>
-      <p [ngClass]="{hidden: scale === 'F'}">Temperature {{celsiusTemperature}} &#176;C</p>-->
-      <!--<p>sunriseTime {{current.sunriseTime}}</p>
-      -->
-      <p>precipProbability {{current.currently.precipProbability}}</p>
-      <p>humidity {{current.currently.humidity}}</p>
-      <p>windSpeed {{current.currently.windSpeed}}</p>
-      <p>windBearing {{current.currently.windBearing}}</p>
+  <div class="col-xs-3 text-left">
+    <div class="left-panel-component">
+      <h4>{{convertedDate | date:'EEEE, dd MMMM yyyy'}}</h4>
+      <h4> {{convertedDate | date:'HH:mm'}}</h4>
     </div>
+    <div class="left-panel-component">
+    <p>Feels like: {{current.currently.apparentTemperature | temperatureConverter:current.scale }}&#176;{{current.scale}}</p>
+    <p>Wind: {{current.currently.windSpeed}} mph &nbsp;<span id="direction" style="display: inline-block;">↑</span></p>
+    </div>
+  </div>
+  <div class="col-xs-8">
+    <h1>
+      <canvas id="icon1" width="128" height="128"></canvas>
+      <span>{{current.currently.temperature | temperatureConverter:current.scale}}&#176;{{current.scale}} </span>
+      <span>{{current.currently.summary}}</span>
+    </h1>
+    <h3>{{current.hourlySummary}}</h3>
   </div>
 
 </div>
+<br>
+
+<div class="row">
+</div>
+<!--<div class="row text-left">
+  <div class="col-xs-6">
+    <p>Feels like: {{current.currently.apparentTemperature | temperatureConverter:current.scale }}&#176;{{current.scale}}</p>
+  </div>
+  <div class="col-xs-6">
+    <p>Wind: {{current.currently.windSpeed}} mph &nbsp;<span id="direction" style="display: inline-block;">↑</span></p>
+  </div>
+</div>-->
 
 <!--
   time: number;
