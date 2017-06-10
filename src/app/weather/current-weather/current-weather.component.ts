@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { WeatherService } from './weather/shared/weather.service'
+import { WeatherService } from './shared/weather.service'
 import { IForecast } from './shared/weather.model'
 
 @Component({
@@ -8,8 +8,8 @@ import { IForecast } from './shared/weather.model'
   styleUrls: ['./current-weather.component.css']
 })
 export class CurrentWeatherComponent implements OnInit {
-  weather: IForecast;
-  convertedDate:Date;
+  forecast: IForecast;
+  // convertedDate:Date;
 
   scale: number;
 
@@ -17,11 +17,11 @@ export class CurrentWeatherComponent implements OnInit {
 
   ngOnInit() {
     this.scale = 1;
-    this.weather = this.weatherService.getWeather();
+    this.forecast = this.weatherService.getWeather();
 
 // Create a new JavaScript Date object based on the timestamp
 // multiplied by 1000 so that the argument is in milliseconds, not seconds.
-  this.convertedDate = new Date(this.weather.currently.time*1000);
+  // this.convertedDate = new Date(this.weather.currently.time*1000);
 
   }
 

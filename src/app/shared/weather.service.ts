@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IForecast } from '../../shared/weather.model'
+import { IForecast } from './weather.model';
 
 @Injectable()
 export class WeatherService {
