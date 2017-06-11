@@ -18,7 +18,7 @@ export class HourlyComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.hourly);
-    this.hours = this.hourly.data.data.slice(0, 8);
+    this.hours = this.hourly.data.data.slice(0, 10);
   }
 
   ngAfterViewInit() {

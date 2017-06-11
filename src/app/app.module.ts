@@ -12,7 +12,6 @@ import { HourlyComponent } from './hourly/hourly.component';
 import { DailyComponent } from './daily/daily.component';
 
 import {TemperatureConverterPipe} from './shared/temperature.converter.pipe';
-import {UnixTimeStampFormatterPipe} from './shared/unixtimestamp.formatter.pipe';
 import { WebapiComponent } from './webapi/webapi.component';
 
 @NgModule({
@@ -22,7 +21,6 @@ import { WebapiComponent } from './webapi/webapi.component';
     CurrentComponent,
     HourlyComponent,
     TemperatureConverterPipe,
-    UnixTimeStampFormatterPipe,
     DailyComponent,
     WebapiComponent
   ],

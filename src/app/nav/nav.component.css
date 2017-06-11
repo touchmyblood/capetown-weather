@@ -1,4 +1,10 @@
-.navbar{
+.navbar {
   max-width: 180px;
   min-width: 128px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  /*bottom: auto;*/
+  z-index: 1;
 }
+

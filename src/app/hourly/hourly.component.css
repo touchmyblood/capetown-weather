@@ -1,3 +1,22 @@
+.container-hourly{
+  margin-top: 80px;
+}
+
+.wind-direction {
+  display: inline-block;
+}
+
+.lower-border{
+  border-bottom: 1px solid #c8c8c8;
+}
+
+.container-hourly .row{
+  padding: 15px 0;
+  min-height: 05px;
+  text-align: left;
+  font-size: 13px;
+}
+
 .hourly-daily{
   margin-top: 80px;
 }

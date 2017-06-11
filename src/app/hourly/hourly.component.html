@@ -1,45 +1,48 @@
-<table class="hourly-table text-center">
-  <thead>
-    <tr>
-      <td><strong>{{hours[0].time | date: 'EEEE'}}</strong></td>
-      <!--<th *ngFor="let hour of hours">{{hour.time }}</th>-->
-      <!--<tr>
-      <th> {{hours.data.time | date: 'EEEE'}}</th>
-      <td *ngFor="let hour of hours">{{hour.time }}</td>
-    </tr>-->
-
-      <td *ngFor="let hour of hours">
-        {{hour.time | unixTimeStampFormatterPipe}}
-        <br>
-        <canvas [attr.id]="'icon-hourly'+hour.time" class="icons-hourly" width="64" height="64">{{hour.icon}}</canvas>
-      </td>
-    </tr>
-
-  </thead>
-  <tbody>
-    <tr>
-      <td><span>Forecast</span></td>
-      <td *ngFor="let hour of hours"><span>{{hour.summary}}</span></td>
-    </tr>
-
-    <tr>
-      <td><span>Temp &#176;{{hourly.scale}}</span></td>
-      <td *ngFor="let hour of hours"><span>{{hour.temperature | temperatureConverter:hourly.scale }}&#176;</span></td>
-    </tr>
-
-
-      <tr>
-        <td><span>Wind</span></td>
-        <td *ngFor="let hour of hours"><span>{{hour.windSpeed}} mph &nbsp; </span><span [ngStyle]="{'transform':'rotate('+hour.windBearing+'deg)'}" [attr.id]="'direction'+hour.time" class="wind-direction" style="display: inline-block;">↑</span></td>
-      </tr>
-      <!--<p>Wind: {{current.data.windSpeed}} mph &nbsp;<span id="direction" style="display: inline-block;">↑</span></p>-->
-
-      <!--<td *ngFor="let hour of hourly.data">{{hour.time}}}</td>-->
-      <!--<td>Today</td>
-      <td>Today</td>
-      <td>Today</td>
-      <td>Today</td>
-      <td>Today</td>-->
-
-  </tbody>
-</table>
+<div class="container-hourly text-left">
+  <div class="row lower-border">
+    <div class="col-xs-2 ">
+      <h2>{{hours[0].time | date: 'EEEE'}}</h2>
+    </div>
+    <div class="col-xs-1" *ngFor="let hour of hours">
+      <span>{{hour.time *1000 | date:"j"}}</span>
+      <br>
+      <canvas class="icons-hourly" width="64" height="64">{{hour.icon}}</canvas>
+    </div>
+  </div>
+  <div class="row lower-border ">
+    <div class="col-xs-2 ">
+      <span>Forecast</span>
+    </div>
+    <div class="col-xs-1" *ngFor="let hour of hours">
+      <span>{{hour.summary}}</span>
+      <br>
+    </div>
+  </div>
+  <div class="row lower-border">
+    <div class="col-xs-2 ">
+      <span>Temp &#176;{{hourly.scale}}</span>
+    </div>
+    <div class="col-xs-1 " *ngFor="let hour of hours">
+      <span>{{hour.temperature | temperatureConverter:hourly.scale }}&#176;</span>
+      <br>
+    </div>
+  </div>
+  <div class="row lower-border">
+    <div class="col-xs-2 ">
+      <span>Wind</span>
+    </div>
+    <div class="col-xs-1" *ngFor="let hour of hours">
+      <span>{{hour.windSpeed}} mph &nbsp; </span>
+      <br>
+    </div>
+  </div>
+  <div class="row ">
+    <div class="col-xs-2 ">
+      <span>Direction</span>
+    </div>
+    <div class="col-xs-1" *ngFor="let hour of hours">
+     <span [ngStyle]="{'transform':'rotate('+hour.windBearing+'deg)'}" [attr.id]="'direction'+hour.time" class="wind-direction" style="display: inline-block;">↑</span>
+      <br>
+    </div>
+  </div>
+</div>

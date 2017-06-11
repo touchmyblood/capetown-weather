@@ -1,11 +1,14 @@
 .container-daily{
   margin-top: 80px;
 }
-/*.container-daily span{
+.container-daily span{
   text-align: left;
-}*/
+}
 
 .wind-direction {
   display: inline-block;
 }
 
+.right-border{
+  border-right: 1px solid #c8c8c8;
+}
