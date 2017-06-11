@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { WeatherService } from './shared/weather.service'
 import { IForecast, IDataBlock } from './shared/forecast.model'
 import { CurrentModel } from './shared/current.model';
 import { HourlyModel } from './shared/hourly.model';
 import { DailyModel } from './shared/daily.model';
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
+
 
 @Component({
   selector: 'app-root',
@@ -16,12 +18,33 @@ export class AppComponent implements OnInit {
   daily: DailyModel = new DailyModel();
   forecast: IForecast;
   scale: string;
+  previousCurrentTemp: number = 0;
 
-  constructor(private weatherService: WeatherService) { }
+  constructor(private weatherService: WeatherService, public toastr: ToastsManager, vcr: ViewContainerRef) {
+    this.toastr.setRootViewContainerRef(vcr);
+  }
 
   ngOnInit() {
+
     this.scale = 'F';
     this.forecast = this.weatherService.getWeather();
+
+    // Skip first run
+    if (this.previousCurrentTemp !== 0) {
+      // Only check if previous temp was within 'safe' range
+      if (this.previousCurrentTemp <= 77 && this.previousCurrentTemp >= 59) {
+        //Display warning if too hot
+        if (this.forecast.currently.temperature > 77){
+          this.toastr.error('The current temperature is now above than 77F | 25C', 'Now It\'s Hot', { toastLife: 10000, showCloseButton: true });
+        }
+        //Display warning if too cold
+        if(this.forecast.currently.temperature < 59) {
+          this.toastr.warning('The current temperature is now below than 59F | 15C', 'Now It\'s Cold', { toastLife: 10000, showCloseButton: true });
+        }
+      }
+    }
+    this.previousCurrentTemp = this.forecast.currently.temperature;
+
     // console.log(this.forecast.currently);
     this.current.scale = this.scale;
     this.current.data = this.forecast.currently;
@@ -35,7 +58,6 @@ export class AppComponent implements OnInit {
   }
 
   handleScaleChanged($event) {
-    // console.log("handling scale changing to " + $event);
     this.scale = $event;
     this.current.scale = this.scale;
     this.hourly.scale = this.scale;

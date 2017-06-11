@@ -13,6 +13,8 @@ import { DailyComponent } from './daily/daily.component';
 
 import {TemperatureConverterPipe} from './shared/temperature.converter.pipe';
 import { WebapiComponent } from './webapi/webapi.component';
+import {ToastModule} from 'ng2-toastr/ng2-toastr';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,7 @@ import { WebapiComponent } from './webapi/webapi.component';
     WebapiComponent
   ],
   imports: [
-    BrowserModule, FormsModule, ReactiveFormsModule
+    BrowserModule, FormsModule, ReactiveFormsModule,  BrowserAnimationsModule, ToastModule.forRoot()
   ],
   providers: [WeatherService],
   bootstrap: [AppComponent]

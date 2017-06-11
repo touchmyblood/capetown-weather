@@ -1,17 +1,8 @@
-<!--<div class="row">
-  <div class="col-xs-8 text-left">
-    <h4>{{convertedDate | date:'EEEE, dd MMMM yyyy'}}</h4>
-  </div>
-  <div class="col-xs-4 text-right">
-    <h4> {{convertedDate | date:'HH:mm'}}</h4>
-  </div>
-</div>
-<br>-->
 <div class="row">
   <div class="col-xs-3 text-left">
     <div class="left-panel-component">
-      <h4>{{convertedDate | date:'EEEE, dd MMMM yyyy'}}</h4>
-      <h4> {{convertedDate | date:'HH:mm'}}</h4>
+      <h4>{{current.data.time * 1000 | date:'EEEE, dd MMMM yyyy'}}</h4>
+      <h4> {{current.data.time * 1000 | date:'HH:mm'}}</h4>
     </div>
     <div class="left-panel-component">
     <p>Feels like: {{current.data.apparentTemperature | temperatureConverter:current.scale }}&#176;{{current.scale}}</p>
@@ -29,35 +20,3 @@
 
 </div>
 <br>
-
-<div class="row">
-</div>
-<!--<div class="row text-left">
-  <div class="col-xs-6">
-    <p>Feels like: {{current.data.apparentTemperature | temperatureConverter:current.scale }}&#176;{{current.scale}}</p>
-  </div>
-  <div class="col-xs-6">
-    <p>Wind: {{current.data.windSpeed}} mph &nbsp;<span id="direction" style="display: inline-block;">↑</span></p>
-  </div>
-</div>-->
-
-<!--
-  time: number;
-  summary: string;
-  icon: string;
-  sunriseTime?:number;
-  sunsetTime?:number;
-  moonPhase?:number;
-  precipIntensity?: number;
-  precipProbability?: number;
-  temperatureMin?: number;
-  temperatureMax?: number;
-  temperature?: number;
-  apparentTemperature?: number;
-  dewPoint?: number;
-  humidity?: number;
-  windSpeed?: number;
-  windBearing?: number;
-  cloudCover?: number;
-  pressure?: number;
-  ozone?: number;-->
