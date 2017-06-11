@@ -1,0 +1,16 @@
+<div class="container-daily row">
+  <div class="col-xs-4 col-md-2" *ngFor="let day of days">
+    <span class="pull-left">{{day.time *1000 | date:"EEEE"}}</span>
+
+    <br>
+    <span class="pull-left">{{day.time *1000 | date:"MMM dd"}}</span>
+
+    <br>
+    <canvas [attr.id]="'icon-daily'+day.time" class="icons-daily" width="64" height="64">{{day.icon}}</canvas>
+    <br>
+    <span class="pull-left"><h3><strong>{{day.temperatureMax | temperatureConverter:daily.scale }}&#176;</strong>/
+      {{day.temperatureMin | temperatureConverter:daily.scale }}&#176;</h3></span>
+
+    <span class="pull-left">{{day.summary}}</span>
+  </div>
+</div>

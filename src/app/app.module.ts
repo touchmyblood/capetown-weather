@@ -9,9 +9,11 @@ import { CurrentComponent } from './current/current.component';
 import { ReactiveFormsModule  } from '@angular/forms';
 import { FormsModule }   from '@angular/forms';
 import { HourlyComponent } from './hourly/hourly.component';
-import { WeeklyComponent } from './weekly/weekly.component';
+import { DailyComponent } from './daily/daily.component';
 
 import {TemperatureConverterPipe} from './shared/temperature.converter.pipe';
+import {UnixTimeStampFormatterPipe} from './shared/unixtimestamp.formatter.pipe';
+import { WebapiComponent } from './webapi/webapi.component';
 
 @NgModule({
   declarations: [
@@ -19,8 +21,10 @@ import {TemperatureConverterPipe} from './shared/temperature.converter.pipe';
     NavComponent,
     CurrentComponent,
     HourlyComponent,
-    WeeklyComponent,
-    TemperatureConverterPipe
+    TemperatureConverterPipe,
+    UnixTimeStampFormatterPipe,
+    DailyComponent,
+    WebapiComponent
   ],
   imports: [
     BrowserModule, FormsModule, ReactiveFormsModule

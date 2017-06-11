@@ -14,15 +14,15 @@
       <h4> {{convertedDate | date:'HH:mm'}}</h4>
     </div>
     <div class="left-panel-component">
-    <p>Feels like: {{current.currently.apparentTemperature | temperatureConverter:current.scale }}&#176;{{current.scale}}</p>
-    <p>Wind: {{current.currently.windSpeed}} mph &nbsp;<span id="direction" style="display: inline-block;">↑</span></p>
+    <p>Feels like: {{current.data.apparentTemperature | temperatureConverter:current.scale }}&#176;{{current.scale}}</p>
+    <p>Wind: {{current.data.windSpeed}} mph &nbsp;<span class="wind-direction" id="direction" [ngStyle]="{'transform':'rotate('+current.data.windBearing+'deg)'}" >↑</span></p>
     </div>
   </div>
   <div class="col-xs-8">
     <h1>
       <canvas id="icon1" width="128" height="128"></canvas>
-      <span>{{current.currently.temperature | temperatureConverter:current.scale}}&#176;{{current.scale}} </span>
-      <span>{{current.currently.summary}}</span>
+      <span>{{current.data.temperature | temperatureConverter:current.scale}}&#176;{{current.scale}} </span>
+      <span>{{current.data.summary}}</span>
     </h1>
     <h3>{{current.hourlySummary}}</h3>
   </div>
@@ -34,10 +34,10 @@
 </div>
 <!--<div class="row text-left">
   <div class="col-xs-6">
-    <p>Feels like: {{current.currently.apparentTemperature | temperatureConverter:current.scale }}&#176;{{current.scale}}</p>
+    <p>Feels like: {{current.data.apparentTemperature | temperatureConverter:current.scale }}&#176;{{current.scale}}</p>
   </div>
   <div class="col-xs-6">
-    <p>Wind: {{current.currently.windSpeed}} mph &nbsp;<span id="direction" style="display: inline-block;">↑</span></p>
+    <p>Wind: {{current.data.windSpeed}} mph &nbsp;<span id="direction" style="display: inline-block;">↑</span></p>
   </div>
 </div>-->
 
