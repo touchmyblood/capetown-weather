@@ -5,7 +5,8 @@ import { CurrentModel } from './shared/current.model';
 import { HourlyModel } from './shared/hourly.model';
 import { DailyModel } from './shared/daily.model';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
-
+import { Http, Response } from '@angular/http';
+import { Observable } from 'rxjs/Rx';
 
 @Component({
   selector: 'app-root',
@@ -27,9 +28,11 @@ export class AppComponent implements OnInit {
   ngOnInit() {
 
     this.scale = 'F';
-    this.forecast = this.weatherService.getWeather();
+    //DO I NEED A RESOLVER FOR THIS?
+    this.weatherService.getWeatherX().subscribe((forecast: IForecast) => {
+      this.forecast = forecast;
 
-    // Skip first run
+        // Skip first run
     if (this.previousCurrentTemp !== 0) {
       // Only check if previous temp was within 'safe' range
       if (this.previousCurrentTemp <= 77 && this.previousCurrentTemp >= 59) {
@@ -43,6 +46,8 @@ export class AppComponent implements OnInit {
         }
       }
     }
+this.toastr.warning('The current temperature is now below than 59F | 15C', 'Now It\'s Cold', { toastLife: 10000, showCloseButton: true });
+          this.toastr.error('The current temperature is now above than 77F | 25C', 'Now It\'s Hot', { toastLife: 10000, showCloseButton: true });
     this.previousCurrentTemp = this.forecast.currently.temperature;
 
     // console.log(this.forecast.currently);
@@ -55,6 +60,12 @@ export class AppComponent implements OnInit {
 
     this.daily.scale = this.scale;
     this.daily.data = this.forecast.daily;
+    });
+
+    if(this.forecast !== undefined){
+
+
+    }
   }
 
   handleScaleChanged($event) {

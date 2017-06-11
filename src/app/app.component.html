@@ -1,5 +1,5 @@
 <app-nav [scale]="scale" (scaleChanged)="handleScaleChanged($event)"></app-nav>
-<app-current [current]="current"></app-current>
-<app-daily [daily]="daily"></app-daily>
-<app-hourly [hourly]="hourly"></app-hourly>
-<app-webapi></app-webapi>
+<app-current *ngIf="current.data !== undefined" [current]="current"></app-current>
+<app-daily *ngIf="daily.data !== undefined" [daily]="daily"></app-daily>
+<app-hourly *ngIf="hourly.data !== undefined" [hourly]="hourly"></app-hourly>
+<app-webapi ></app-webapi>

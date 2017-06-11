@@ -2,19 +2,22 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { WeatherService } from './shared/weather.service';
 import { NavComponent } from './nav/nav.component';
 import { CurrentComponent } from './current/current.component';
-
-import { ReactiveFormsModule  } from '@angular/forms';
-import { FormsModule }   from '@angular/forms';
 import { HourlyComponent } from './hourly/hourly.component';
 import { DailyComponent } from './daily/daily.component';
-
-import {TemperatureConverterPipe} from './shared/temperature.converter.pipe';
 import { WebapiComponent } from './webapi/webapi.component';
-import {ToastModule} from 'ng2-toastr/ng2-toastr';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { HttpModule, JsonpModule, Jsonp, Response } from '@angular/http';
+
+import { WeatherService } from './shared/weather.service';
+import { TemperatureConverterPipe } from './shared/temperature.converter.pipe';
+
+import { ToastModule } from 'ng2-toastr/ng2-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +30,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     WebapiComponent
   ],
   imports: [
-    BrowserModule, FormsModule, ReactiveFormsModule,  BrowserAnimationsModule, ToastModule.forRoot()
+    BrowserModule, FormsModule, ReactiveFormsModule, BrowserAnimationsModule, ToastModule.forRoot(), HttpModule, JsonpModule
   ],
   providers: [WeatherService],
   bootstrap: [AppComponent]

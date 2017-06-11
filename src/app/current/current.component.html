@@ -5,18 +5,16 @@
       <h4> {{current.data.time * 1000 | date:'HH:mm'}}</h4>
     </div>
     <div class="left-panel-component">
-    <p>Feels like: {{current.data.apparentTemperature | temperatureConverter:current.scale }}&#176;{{current.scale}}</p>
-    <p>Wind: {{current.data.windSpeed}} mph &nbsp;<span class="wind-direction" id="direction" [ngStyle]="{'transform':'rotate('+current.data.windBearing+'deg)'}" >↑</span></p>
+      <p>Feels like: {{current.data.apparentTemperature | temperatureConverter:current.scale }}&#176;{{current.scale}}</p>
+      <p>Wind: {{current.data.windSpeed}} mph &nbsp;<span class="wind-direction" id="direction" [ngStyle]="{'transform':'rotate('+current.data.windBearing+'deg)'}">↑</span></p>
     </div>
   </div>
   <div class="col-xs-8">
     <h1>
-      <canvas id="icon1" width="128" height="128"></canvas>
+      <canvas id="icon1" width="128" height="128">{{current.data.icon}}</canvas>
       <span>{{current.data.temperature | temperatureConverter:current.scale}}&#176;{{current.scale}} </span>
       <span>{{current.data.summary}}</span>
     </h1>
     <h3>{{current.hourlySummary}}</h3>
   </div>
-
 </div>
-<br>

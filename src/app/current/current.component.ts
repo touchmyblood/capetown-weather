@@ -12,21 +12,34 @@ declare let Skycons: any;
 })
 export class CurrentComponent implements OnInit {
   @Input() current: CurrentModel;
-  // convertedDate: Date;
 
-  constructor() {
+  constructor() { }
 
-  }
-
-
+  // TODO DONT NEED ALL THESE METHODS
   ngOnInit() {
+    if(this.current.data !== undefined){
     // Display & animate the skycon icons
     var skycons = new Skycons({ "color": "white" });
     skycons.add("icon1", this.current.data.icon);
     skycons.play();
-
+    }
   }
 
-  ngOnChanges() {
+  ngOnChanges(){
+    if(this.current.data !== undefined){
+        // Display & animate the skycon icons
+    var skycons = new Skycons({ "color": "white" });
+    skycons.add("icon1", this.current.data.icon);
+    skycons.play();
+    }
+  }
+
+  ngAfterViewInit() {
+if(this.current.data !== undefined){
+    // Display & animate the skycon icons
+    var skycons = new Skycons({ "color": "white" });
+    skycons.add("icon1", this.current.data.icon);
+    skycons.play();
+    }
   }
 }
