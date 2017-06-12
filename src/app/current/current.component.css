@@ -4,5 +4,9 @@
 
 .wind-direction {
   display: inline-block;
+}
 
+.component-title{
+  font-size: 62px;
+  text-align: left;
 }

@@ -9,11 +9,12 @@ export class WeatherService {
   apikey: string  = "API KEY SHOULD BE PASTED HERE";
   coordinates: string = "-33.9249,18.4241";
   delay: number = 0;
-  chaos: number = 0.2;
+  chaos: number = 0.5;
 
   constructor(private http: Http, private jsonp: Jsonp) { }
 
   getWeatherX(): Observable<IForecast> {
+
     let apiURL = `${this.apiRoot}/${this.apikey}/${this.coordinates}?delay=${this.delay}&chaos=${this.chaos}&callback=JSONP_CALLBACK`;
     return this.jsonp.request(apiURL).map((response: Response) => {
       return <IForecast>response.json();

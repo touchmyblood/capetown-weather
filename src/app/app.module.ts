@@ -6,7 +6,7 @@ import { NavComponent } from './nav/nav.component';
 import { CurrentComponent } from './current/current.component';
 import { HourlyComponent } from './hourly/hourly.component';
 import { DailyComponent } from './daily/daily.component';
-import { WebapiComponent } from './webapi/webapi.component';
+import { FooterComponent } from './footer/footer.component';
 import { LoadingComponent } from './loading/loading.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
@@ -28,7 +28,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HourlyComponent,
     TemperatureConverterPipe,
     DailyComponent,
-    WebapiComponent,
+    FooterComponent,
     LoadingComponent
   ],
   imports: [
