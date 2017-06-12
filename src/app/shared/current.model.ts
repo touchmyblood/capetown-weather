@@ -4,4 +4,5 @@ export class CurrentModel {
   scale: string;
   hourlySummary: string;
   data: IDataPoint;
+  visibilityRefreshButton: string;
 }

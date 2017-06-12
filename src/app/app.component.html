@@ -1,6 +1,6 @@
 <div *ngIf="loading === false">
   <app-nav [scale]="scale" (scaleChanged)="handleScaleChanged($event)"></app-nav>
-  <app-current [current]="current"></app-current>
+  <app-current [current]="current" (refreshClicked)="handleRefreshClicked($event)"></app-current>
   <app-daily [daily]="daily"></app-daily>
   <app-hourly [hourly]="hourly"></app-hourly>
   <app-footer></app-footer>
