@@ -1,3 +1,4 @@
+import './rxjs-extensions';
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { WeatherService } from './shared/weather.service'
 import { IForecast } from './shared/forecast.model'
@@ -5,7 +6,9 @@ import { CurrentModel } from './shared/current.model';
 import { HourlyModel } from './shared/hourly.model';
 import { DailyModel } from './shared/daily.model';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
-import { Observable, Subscription } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
+
 
 @Component({
   selector: 'app-root',
