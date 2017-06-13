@@ -17,6 +17,7 @@ export class DailyComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    // Only grab the first 6 days from the data
     this.days = this.daily.data.data.slice(0, 6);
   }
 
@@ -29,9 +30,4 @@ export class DailyComponent implements OnInit {
     }
     skycons.play();
   }
-
-  ngOnChanges() {
-    // console.log("scale has changed " + this.scale);
-  }
-
 }

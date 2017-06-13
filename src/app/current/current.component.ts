@@ -17,8 +17,9 @@ export class CurrentComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
+    // Display & animate the skycon icons
     if (this.current.data !== undefined) {
-      // Display & animate the skycon icons
       var skycons = new Skycons({ "color": "white" });
       skycons.add("icon1", this.current.data.icon);
       skycons.play();

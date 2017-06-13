@@ -6,10 +6,10 @@ import { Observable } from 'rxjs/Rx';
 @Injectable()
 export class WeatherService {
   apiRoot: string = 'http://ec-weather-proxy.appspot.com/forecast/';
-  apikey: string  = "API KEY SHOULD BE PASTED HERE";
+  apikey: string  = "29e4a4ce0ec0068b03fe203fa81d457f";
   coordinates: string = "-33.9249,18.4241";
   delay: number = 0;
-  chaos: number = 0.8;
+  chaos: number = 0.2;
 
   constructor(private http: Http, private jsonp: Jsonp) { }
 

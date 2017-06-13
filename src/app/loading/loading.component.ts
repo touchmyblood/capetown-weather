@@ -14,8 +14,8 @@ export class LoadingComponent implements OnInit {
   ngOnInit() {
     var loader =
       {
-        width: 120,
-        height: 120,
+        width: 220,
+        height: 220,
 
         stepsPerFrame: 10,
         trailLength: .9,
@@ -25,15 +25,11 @@ export class LoadingComponent implements OnInit {
         fillColor: '#D4FF00',
         strokeColor: '#FFF',
 
-        setup: function () {
-          this._.lineWidth = 1200;
-        },
-
         path: [
-          ['line', 0, 0, 120, 0],
-          ['line', 120, 0, 120, 120],
-          ['line', 120, 120, 0, 120],
-          ['line', 0, 120, 0, 0]
+          ['line', 0, 0, 180, 0],
+          ['line', 180, 0, 180, 180],
+          ['line', 180, 180, 0, 180],
+          ['line', 0, 180, 0, 0]
         ]
       };
 

@@ -17,7 +17,7 @@ export class HourlyComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.hourly);
+    // Only grab the first 10 hours from the array.
     this.hours = this.hourly.data.data.slice(0, 10);
   }
 
@@ -29,13 +29,5 @@ export class HourlyComponent implements OnInit {
       skycons.add(icons[i], icons[i].innerHTML);
     }
     skycons.play();
-
-
-    // let directions = document.getElementsByClassName("wind-directions");
-    // for (var i = 0, len = directions.length; i < len; i++) {
-    //   var element = document.getElementById(directions[i].id);
-    //   // element.style.webkitTransform = "rotate("+this.current.data.windBearing+"deg)";
-    // }
   }
-
 }

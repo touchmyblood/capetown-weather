@@ -1,9 +1,8 @@
 <div class="container-daily row ">
-  <!--<h3>Weekly Forecast</h3>-->
   <div class="col-xs-4 col-md-2 " *ngFor="let day of days">
 
     <h4 class="pull-left">{{day.time *1000 | date:"EEEE"}}</h4>
-    <br>    <br>
+    <br><br>
     <span class="pull-left">{{day.time *1000 | date:"MMM dd"}}</span>
 
     <br><br>

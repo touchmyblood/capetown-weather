@@ -12,11 +12,9 @@ export class NavComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    // console.log('scale is: ' + this.scale);
   }
 
   changeScale() {
-    // console.log('Clicked the radio button to change to:' + this.scale);
     this.scaleChanged.emit(this.scale);
   }
 }

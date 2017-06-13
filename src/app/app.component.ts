@@ -19,8 +19,8 @@ export class AppComponent implements OnInit {
   hourly: HourlyModel = new HourlyModel();
   daily: DailyModel = new DailyModel();
 
-  // Default scale to value of 'F'
-  scale: string = 'F';
+  // Default scale to value of 'C'
+  scale: string = 'C';
   previousCurrentTemp: number = 0;
 
   // Loading flag will be set to false until the first valid data is returned from api
@@ -39,42 +39,6 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     // Do the first call to the api and then setup a hard coded 20 minute timer for the next call
     this.getWeather();
-    this.setupSubscriptions()
-
-    //DO I NEED A RESOLVER FOR THIS?
-    // this.observer = Observable.interval(this.timer);
-    // this.timerSubscription = this.observer.subscribe(x => {
-    //     this.weatherSubscription = this.weatherService.getWeatherX()
-    //         .catch(error => this.handleError(error))
-    //         .subscribe((forecast: IForecast) => {
-    //             this.forecast = forecast;
-    //         });
-    //     this.toastr.success('refreshed feed', 'done', { toastLife: 10000, showCloseButton: true });
-    // });
-
-    // this.weatherService.getWeatherX().subscribe((forecast: IForecast) => {
-
-
-    //     // Skip first run
-    // if (this.previousCurrentTemp !== 0) {
-    //   // Only check if previous temp was within 'safe' range
-    //   if (this.previousCurrentTemp <= 77 && this.previousCurrentTemp >= 59) {
-    //     //Display warning if too hot
-    //     if (this.forecast.currently.temperature > 77){
-    //       this.toastr.error('The current temperature is now above than 77F | 25C', 'Now It\'s Hot', { toastLife: 10000, showCloseButton: true });
-    //     }
-    //     //Display warning if too cold
-    //     if(this.forecast.currently.temperature < 59) {
-    //       this.toastr.warning('The current temperature is now below than 59F | 15C', 'Now It\'s Cold', { toastLife: 10000, showCloseButton: true });
-    //     }
-    //   }
-    // }
-
-    // this.previousCurrentTemp = this.forecast.currently.temperature;
-
-    // console.log(this.forecast.currently);
-
-    // });
   }
 
   private handleScaleChanged($event) {
@@ -101,7 +65,8 @@ export class AppComponent implements OnInit {
     return Observable.throw(error.status);
   }
   private getWeather() {
-    // console.log("Get Weather Execute");
+    //DO I NEED A RESOLVER FOR THIS?
+
     this.weatherService.getWeatherX()
       .catch(error => this.handleError(error))
       .subscribe((forecast: IForecast) => {
@@ -138,6 +103,26 @@ export class AppComponent implements OnInit {
       this.daily.data = forecast.daily;
 
       this.loading = false;
+
+      this.displayWarning();
+
     }
+  }
+
+  private displayWarning() {
+
+    // If current temp was in the 'safe' zone or this is the first time we are checking this
+    if ((this.previousCurrentTemp <= 77 && this.previousCurrentTemp >= 59) || (this.previousCurrentTemp == 0)) {
+      // Display warning if too hot
+      if (this.current.data.temperature > 77) {
+        this.toastr.warning('The current temperature is now above 25°C | 77°F', 'Now It\'s Hot', { toastLife: 10000, showCloseButton: true });
+      }
+      // Display warning if too cold
+      if (this.current.data.temperature < 59) {
+        this.toastr.info('The current temperature is now below 15°C | 59°F', 'Now It\'s Cold', { toastLife: 10000, showCloseButton: true });
+      }
+    }
+
+    this.previousCurrentTemp = this.current.data.temperature;
   }
 }
