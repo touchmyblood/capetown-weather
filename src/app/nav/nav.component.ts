@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
-import { ReactiveFormsModule  }   from '@angular/forms';
+import { ReactiveFormsModule  } from '@angular/forms';
 
 @Component({
   selector: 'app-nav',

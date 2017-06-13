@@ -15,9 +15,9 @@ export interface IDataPoint {
   time: number;
   summary: string;
   icon: string;
-  sunriseTime?:number;
-  sunsetTime?:number;
-  moonPhase?:number;
+  sunriseTime?: number;
+  sunsetTime?: number;
+  moonPhase?: number;
   precipIntensity?: number;
   precipProbability?: number;
   temperatureMin?: number;
@@ -33,15 +33,15 @@ export interface IDataPoint {
   ozone?: number;
 }
 
-export interface IDataBlock{
-  data : IDataPoint[];
+export interface IDataBlock {
+  data: IDataPoint[];
   summary: string;
   icon: string;
 }
 
-export interface IFlagsObject{
-  "sources": string[];
-  "isd-stations": string[];
-  "madis-stations": string[];
+export interface IFlagsObject {
+  'sources': string[];
+  'isd-stations': string[];
+  'madis-stations': string[];
   units: string;
 }

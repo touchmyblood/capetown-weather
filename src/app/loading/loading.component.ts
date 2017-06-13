@@ -12,8 +12,7 @@ export class LoadingComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    var loader =
-      {
+    const loader = {
         width: 220,
         height: 220,
 
@@ -33,7 +32,8 @@ export class LoadingComponent implements OnInit {
         ]
       };
 
-    var d, a, container = document.getElementById('loader-canvas');
+    let d, a: any;
+    const container = document.getElementById('loader-canvas');
 
     d = document.createElement('div');
     d.className = 'l';

@@ -20,14 +20,14 @@ export class AppComponent implements OnInit {
   daily: DailyModel = new DailyModel();
 
   // Default scale to value of 'C'
-  scale: string = 'C';
-  previousCurrentTemp: number = 0;
+  scale = 'C';
+  previousCurrentTemp = 0;
 
   // Loading flag will be set to false until the first valid data is returned from api
-  loading: boolean = true;
+  loading = true;
 
   // Properties used for the interval timer and weather subscription
-  defaultWait: number = 1;
+  defaultWait = 1;
   timer: number = 60000 * this.defaultWait;
   observer: Observable<number> = Observable.interval(this.timer);
   timerSubscription: Subscription;
@@ -41,31 +41,32 @@ export class AppComponent implements OnInit {
     this.getWeather();
   }
 
-  private handleScaleChanged($event) {
+  public handleScaleChanged($event) {
     this.scale = $event;
     this.current.scale = this.scale;
     this.hourly.scale = this.scale;
     this.daily.scale = this.scale;
   }
 
-  private handleRefreshClicked(){
+  public handleRefreshClicked() {
     this.getWeather();
   }
 
   private handleError(error: Response) {
-    if (this.timer == 60000 * this.defaultWait) {
+    if (this.timer === 60000 * this.defaultWait) {
       this.timer = 60000;
     }
     this.timer *= 0.5; // Should be 2
     this.setupSubscriptions();
 
-    this.toastr.error('Error retrieving the latest weather information. We will try again in ' + (this.timer / 60000) + ' minutes.', null, { toastLife: 15000,  "progressBar": true });
+    this.toastr.error('Error retrieving the latest weather information. We will try again in '
+      + (this.timer / 60000) + ' minutes.', null, { toastLife: 15000,  'progressBar': true });
 
-    this.current.visibilityRefreshButton = "visible";
+    this.current.visibilityRefreshButton = 'visible';
     return Observable.throw(error.status);
   }
   private getWeather() {
-    //DO I NEED A RESOLVER FOR THIS?
+    // DO I NEED A RESOLVER FOR THIS?
 
     this.weatherService.getWeatherX()
       .catch(error => this.handleError(error))
@@ -94,7 +95,7 @@ export class AppComponent implements OnInit {
       this.current.scale = this.scale;
       this.current.data = forecast.currently;
       this.current.hourlySummary = forecast.hourly.summary;
-      this.current.visibilityRefreshButton = "hidden";
+      this.current.visibilityRefreshButton = 'hidden';
 
       this.hourly.scale = this.scale;
       this.hourly.data = forecast.hourly;
@@ -112,10 +113,11 @@ export class AppComponent implements OnInit {
   private displayWarning() {
 
     // If current temp was in the 'safe' zone or this is the first time we are checking this
-    if ((this.previousCurrentTemp <= 77 && this.previousCurrentTemp >= 59) || (this.previousCurrentTemp == 0)) {
+    if ((this.previousCurrentTemp <= 77 && this.previousCurrentTemp >= 59) || (this.previousCurrentTemp === 0)) {
       // Display warning if too hot
       if (this.current.data.temperature > 77) {
-        this.toastr.warning('The current temperature is now above 25°C | 77°F', 'Now It\'s Hot', { toastLife: 10000, showCloseButton: true });
+        this.toastr.warning('The current temperature is now above 25°C | 77°F', 'Now It\'s Hot',
+          { toastLife: 10000, showCloseButton: true });
       }
       // Display warning if too cold
       if (this.current.data.temperature < 59) {

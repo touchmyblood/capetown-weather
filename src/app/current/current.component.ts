@@ -20,13 +20,13 @@ export class CurrentComponent implements OnInit {
 
     // Display & animate the skycon icons
     if (this.current.data !== undefined) {
-      var skycons = new Skycons({ "color": "white" });
-      skycons.add("icon1", this.current.data.icon);
+      const skycons = new Skycons({ 'color': 'white' });
+      skycons.add('weather-icon', this.current.data.icon);
       skycons.play();
     }
   }
 
-  private handleRefreshClick() {
+  public handleRefreshClick() {
     this.refreshClicked.emit();
   }
 

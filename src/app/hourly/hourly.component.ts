@@ -1,18 +1,18 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 import { HourlyModel } from '../shared/hourly.model';
 import { IForecast, IDataBlock, IDataPoint } from '../shared/forecast.model'
 
-declare let Skycons:any;
+declare let Skycons: any;
 
 @Component({
   selector: 'app-hourly',
   templateUrl: './hourly.component.html',
   styleUrls: ['./hourly.component.css']
 })
-export class HourlyComponent implements OnInit {
-  @Input() hourly:HourlyModel;
+export class HourlyComponent implements OnInit, AfterViewInit {
+  @Input() hourly: HourlyModel;
 
-  hours:IDataPoint[];
+  hours: IDataPoint[];
 
   constructor() { }
 
@@ -22,10 +22,10 @@ export class HourlyComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    let icons = document.getElementsByClassName("icons-hourly");
-    let skycons = new Skycons({ "color": "white" });
+    const icons = document.getElementsByClassName('icons-hourly');
+    const skycons = new Skycons({ 'color': 'white' });
 
-    for (var i = 0, len = icons.length; i < len; i++) {
+    for (let i = 0, len = icons.length; i < len; i++) {
       skycons.add(icons[i], icons[i].innerHTML);
     }
     skycons.play();

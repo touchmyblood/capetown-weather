@@ -10,10 +10,9 @@ export class TemperatureConverterPipe implements PipeTransform {
         // We only receive temps in F, so just
         // round to 0 places and return
         return Math.round(value);
-      }
-      else
+      }  else
         if (scale === 'C') {
-          var temperature = (value - 32) / 1.8;
+          const temperature = (value - 32) / 1.8;
           return Math.round(temperature);
         }
     }

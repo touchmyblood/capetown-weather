@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, AfterViewInit } from '@angular/core';
 import { DailyModel } from '../shared/daily.model';
 import { IForecast, IDataBlock, IDataPoint } from '../shared/forecast.model'
 
@@ -9,7 +9,7 @@ declare let Skycons: any;
   templateUrl: './daily.component.html',
   styleUrls: ['./daily.component.css']
 })
-export class DailyComponent implements OnInit {
+export class DailyComponent implements OnInit, AfterViewInit {
   @Input() daily: DailyModel;
 
   days: IDataPoint[];
@@ -22,10 +22,10 @@ export class DailyComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    let icons = document.getElementsByClassName("icons-daily");
-    let skycons = new Skycons({ "color": "white" });
+    const icons = document.getElementsByClassName('icons-daily');
+    const skycons = new Skycons({ 'color': 'white' });
 
-    for (var i = 0, len = icons.length; i < len; i++) {
+    for (let i = 0, len = icons.length; i < len; i++) {
       skycons.add(icons[i], icons[i].innerHTML);
     }
     skycons.play();
