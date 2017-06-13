@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
   loading = true;
 
   // Properties used for the interval timer and weather subscription
-  defaultWait = 1;
+  defaultWait = 20;
   timer: number = 60000 * this.defaultWait;
   observer: Observable<number> = Observable.interval(this.timer);
   timerSubscription: Subscription;
@@ -59,7 +59,7 @@ export class AppComponent implements OnInit {
     if (this.timer === 60000 * this.defaultWait) {
       this.timer = 60000;
     }
-    this.timer *= 0.5; // Should be 2
+    this.timer *= 2;
     this.setupSubscriptions();
 
     this.toastr.error('Error retrieving the latest weather information. We will try again in '
