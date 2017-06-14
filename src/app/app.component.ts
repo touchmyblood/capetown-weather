@@ -70,8 +70,7 @@ export class AppComponent implements OnInit {
   }
   private getWeather() {
     // DO I NEED A RESOLVER FOR THIS?
-
-    this.weatherService.getWeatherX()
+    this.weatherService.getWeather()
       .catch(error => this.handleError(error))
       .subscribe((forecast: IForecast) => {
         this.populateComponentData(forecast);
