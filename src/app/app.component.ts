@@ -63,7 +63,7 @@ export class AppComponent implements OnInit {
     this.setupSubscriptions();
 
     this.toastr.error('Error retrieving the latest weather information. We will try again in '
-      + (this.timer / 60000) + ' minutes.', null, { toastLife: 15000,  'progressBar': true });
+      + (this.timer / 60000) + ' minutes.', null, { toastLife: 15000, showCloseButton: true });
 
     this.current.visibilityRefreshButton = 'visible';
     return Observable.throw(error.status);
